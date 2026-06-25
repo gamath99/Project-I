@@ -31,10 +31,14 @@ path = [(0,0),
 while True:
     # Display the initial board 
     print("\nToukay Board")
-    print("Row    P1    P2")
+    print("----------------------")
+    print("|Row|    |P1|    |P2|")
+    print("----------------------")
 
     for i in range(len(board)):
-        print(i, "    ", board[i][0], "    ", board[i][1])
+        print("----------------------")
+        print(|i|, "    ", |board[i][0]|, "    ", |board[i][1]|)
+        print("----------------------")
 
     print("\nScores")
     print("Player 1:", player1_score)
