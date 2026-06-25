@@ -114,6 +114,17 @@ while True:
 
 print("Game Over")
 
+print("Player 1:", player1_score)
+print("Player 2:", player2_score)
+
+if player1_score >player2_score:
+    print("Player 1 wins!")
+
+elif player2_score > player1_score:
+    print("Player 2 wins!")
+
+else:
+    print("Draw!")
 
 
 
