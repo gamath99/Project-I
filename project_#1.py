@@ -31,10 +31,10 @@ path = [(0,0),
 while True:
     # Display the initial board 
     print("\nToukay Board")
-    print("Row  Player_1    Player_2")
+    print("Row    P1    P2")
 
     for i in range(len(board)):
-        print(i, "  ", board[i][0], "   ", board[i][1])
+        print(i, "    ", board[i][0], "    ", board[i][1])
 
     print("\nScores")
     print("Player 1:", player1_score)
@@ -52,12 +52,70 @@ while True:
     print("\nPlayer", turn_player)
 
     row_selection = int(input("Choose row(0-2): "))
+    col_selection = 0
 
     #Identify the column of each player 
     if turn_player == 1: 
         Col_selection = 0
     else:
-        col_choice = 1
+        col_selection = 1
+    
+    #validate move by evaluate the player input
+    if row_selection < 0 or row_selection > 2:
+        print("Please select another row between (0-2)")
+    
+    elif board[row_selection][col_selection] == 0:
+        print(" That cell is empty.")
+
+    else: 
+        stones = board[row_selection][col_selection]
+        board[row_selection][col_selection] = 0 
+
+        index = path.index((row_selection, col_selection))
+
+        was_empty = False
+
+        #designated player distribute the stones in the board. 
+        while stones > 0:
+
+            index = (index + 1) % len(path)
+
+            r = path[index][0]
+            c = path[index][1]
+
+            if stones == 1 and board[r][c] == 0:
+                was_empty = True
+
+            board[r][c] += 1 
+
+            stones -= 1
+
+        #Capture the stones by the current player 
+
+        r = path[index][0]
+        c = path[index][1]
+
+        if not was_empty and board[r][c] == 4:
+
+            board[r][c] = 0
+
+            if turn_player == 1:
+                player1_score += 4
+            else:
+                player2_score += 4
+
+            print("Capture!!!")
+
+    #Change player
+    if turn_player == 1:
+        turn_player = 2
+    else:
+        turn_player = 1
+
+print("Game Over")
+
+
+
 
     
 
@@ -65,4 +123,3 @@ while True:
 
 
 
-    
