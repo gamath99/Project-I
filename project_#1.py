@@ -40,19 +40,29 @@ while True:
     print("Player 1:", player1_score)
     print("Player 2:", player2_score)
     
-    #Check if the boardis empty as the game is over if it is empty
+    #Check if the board is empty as the game is over if it is empty
     total = 0
 
     for row in board:
         total += row[0] + row[1]
         
-    if total == 0
+    if total == 0:
         break
 
     print("\nPlayer", turn_player)
 
-    row_selection = int(input("Choose row: "))
+    row_selection = int(input("Choose row(0-2): "))
+
+    #Identify the column of each player 
+    if turn_player == 1: 
+        Col_selection = 0
+    else:
+        col_choice = 1
+
     
+
+
+
 
 
     
