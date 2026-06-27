@@ -119,7 +119,7 @@ while game_over == False:
                 r2 = path[index][0]
                 c2 = path[index][1]
 
-                if board[r2][c2] == 4 and capture < 2:
+                if board[r2][c2] == 4 and captures < 2:
                     board[r2][c2] = 0
 
                     captures += 1
