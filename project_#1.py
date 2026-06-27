@@ -45,7 +45,7 @@ while game_over == False:
     print("Player 1:", player1_score)
     print("Player 2:", player2_score)
     
-    #Check if the board is empty as the game is over if it is empty
+    #Check if the board is empty, meanwhile the game is over if it is empty
     total = 0
 
     for row in board:
@@ -138,8 +138,8 @@ while game_over == False:
                 turn_over = True
             else:
 
-                row_selection = r
-                col_selection = c
+                #row_selection = r
+                #col_selection = c
 
                 print("Continue picking stones from cell:", row_selection, col_selection)
 
