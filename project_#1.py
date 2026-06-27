@@ -108,7 +108,7 @@ while game_over == False:
 
                 captures += 1 
 
-                if current_player == 1:
+                if turn_player == 1:
                     player1_score += 4
                 else:
                     player2_score += 4
