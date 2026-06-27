@@ -137,11 +137,11 @@ while game_over == False:
 
                 turn_over = True
             else:
-
+                pass    
                 #row_selection = r
                 #col_selection = c
 
-                print("Continue picking stones from cell:", row_selection, col_selection)
+                #print("Continue picking stones from cell:", row_selection, col_selection)
 
     #Change player
     if turn_player == 1:
