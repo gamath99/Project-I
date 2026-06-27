@@ -102,9 +102,13 @@ while game_over == False:
 
             captures = 0
 
-            if board[r][c] == 4:
+            #verify last lending cell for the stone
+            r_last = r
+            c_last = c
 
-                board[r][c] = 0
+            if board[r_last][c_last] == 4:
+
+                board[r_last][c_last] = 0
 
                 captures += 1 
 
@@ -113,14 +117,17 @@ while game_over == False:
                 else:
                     player2_score += 4
 
+                #checking previous cell
                 previous_index = (index - 1) % len(path)
+                r_prev = path[previous_index]
+                c_prev = path[previous_index]
 
 
-                r2 = path[index][0]
-                c2 = path[index][1]
+                #r2 = path[index][0]
+                #c2 = path[index][1]
 
-                if board[r2][c2] == 4 and captures < 2:
-                    board[r2][c2] = 0
+                if board[r_prev][c_prev] == 4 and captures < 2:
+                    board[r_prev][c_prev] = 0
 
                     captures += 1
                            
