@@ -25,19 +25,20 @@ path = [(0,0),
         (1,0)
 ]
 
+game_over = False
+
 #The game is a counting and repetition process to capture points to score. 
 # create a loop to play the game while consider the turn for each player 
 
-while True:
+while game_over == False:
     # Display the initial board 
     print("\nToukay Board")
-    print("----------------------")
+    print("---------------------------")
     print("|Row|    |P1|    |P2|")
-    print("----------------------")
-
+    
     for i in range(len(board)):
         print("----------------------")
-        print(|i|, "    ", |board[i][0]|, "    ", |board[i][1]|)
+        print("|",i,"|", "    ", "|",board[i][0],"|", "    ", "|",board[i][1],"|")
         print("----------------------")
 
     print("\nScores")
@@ -51,6 +52,7 @@ while True:
         total += row[0] + row[1]
         
     if total == 0:
+        game_over = True
         break
 
     print("\nPlayer", turn_player)
@@ -72,43 +74,74 @@ while True:
         print(" That cell is empty.")
 
     else: 
-        stones = board[row_selection][col_selection]
-        board[row_selection][col_selection] = 0 
+        turn_over = False 
+        while turn_over == False:
+            stones = board[row_selection][col_selection]
+            board[row_selection][col_selection] = 0 
 
-        index = path.index((row_selection, col_selection))
+            index = path.index((row_selection, col_selection))
 
-        was_empty = False
+            was_empty = False
 
-        #designated player distribute the stones in the board. 
-        while stones > 0:
+            #designated player distribute the stones in the board. 
+            while stones > 0:
 
-            index = (index + 1) % len(path)
+                index = (index + 1) % len(path)
 
-            r = path[index][0]
-            c = path[index][1]
+                r = path[index][0]
+                c = path[index][1]
 
-            if stones == 1 and board[r][c] == 0:
-                was_empty = True
+                if stones == 1 and board[r][c] == 0:
+                    was_empty = True
 
-            board[r][c] += 1 
+                board[r][c] += 1 
 
-            stones -= 1
+                stones -= 1
 
-        #Capture the stones by the current player 
+            #Capture the stones by the current player 
 
-        r = path[index][0]
-        c = path[index][1]
+            captures = 0
 
-        if not was_empty and board[r][c] == 4:
+            if board[r][c] == 4:
 
-            board[r][c] = 0
+                board[r][c] = 0
 
-            if turn_player == 1:
-                player1_score += 4
+                captures += 1 
+
+                if current_player == 1:
+                    player1_score += 4
+                else:
+                    player2_score += 4
+
+                previous_index = (index - 1) % len(path)
+
+
+                r2 = path[index][0]
+                c2 = path[index][1]
+
+                if board[r2][c2] == 4 and capture < 2:
+                    board[r2][c2] = 0
+
+                    captures += 1
+                           
+                    if turn_player == 1:
+                        player1_score += 4
+                    else:
+                        player2_score += 4
+
+            #print("Capture!!!")
+
+            # continue collecting stones or stop 
+
+            if was_empty:
+
+                turn_over = True
             else:
-                player2_score += 4
 
-            print("Capture!!!")
+                row_selection = r
+                col_selection = c
+
+                print("Continue picking stones from cell:", row_selection, col_selection)
 
     #Change player
     if turn_player == 1:
