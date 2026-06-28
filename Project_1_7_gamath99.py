@@ -1,8 +1,9 @@
 """ Project 1
 Gama Mathurin 
 The count and capture Game 
-The game consists in collecting more points (stones) then the opponents while moving the points (stones) in a clockwise way. The Player scores by adding a point in a 3 point cell, 
-but he can only capture the stones if the last distributed point drop in te 3 point cell. 
+The game consists in collecting more points (stones) then the opponents while moving the points (stones) in a clockwise way. 
+The Player scores by adding a point in a 3 point cell, 
+but he can only capture the stones if the last distributed point drop in the 3 point cell. 
 
 """
 
