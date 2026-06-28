@@ -147,6 +147,16 @@ while game_over == False:
                         player2_score += 4
                     print("Capture!!!")
 
+            board_state = str(board)
+
+            if board_state in board_history:
+                print("\nSame position occured during this turn.")
+                print("Stopping Turn and shift to  the other player")
+                turn_over = True
+            
+            else:
+                board_history.append(board_state)
+
             #continue collecting stones or stop 
 
             if was_empty:
