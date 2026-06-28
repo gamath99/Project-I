@@ -1,7 +1,9 @@
 """ Project 1
 Gama Mathurin 
 The count and capture Game 
-The game consist in collecting more points then the opponents while moving the points in a clockwise way. The Player score by adding a point in 3 point cell.
+The game consists in collecting more points (stones) then the opponents while moving the points (stones) in a clockwise way. The Player scores by adding a point in a 3 point cell, 
+but he can only capture the stones if the last distributed point drop in te 3 point cell. 
+
 """
 
 #Declare the main variable that will be used through all the program
@@ -11,12 +13,15 @@ player1_score = 0
 player2_score = 0
 
 # Assign the initial Board that will start the game
-board = [[4,4],[4,4],[4,4]]
+board = [[4,4],
+         [4,4],
+         [4,4]
+         ]
 
-# Assign a variable for the turn player, 1 for player 1 and 2 for player 2
+# Assign a variable to identify the turn of a player, 1 for player 1 and 2 for player 2
 turn_player = 1
 
-#Create a path on how to move the points in the board 
+#Create a path on how to move the points in the board, considering the clockwise way for the 2 players. 
 path = [(0,0),
         (0,1),
         (1,1),
@@ -24,9 +29,10 @@ path = [(0,0),
         (2,0),
         (1,0)
 ]
-
+# create an empty list to collect the history of the game to prevent infinite loop 
 board_history = []
 
+#Assign a variable to control the main loop 
 game_over = False
 
 #The game is a counting and repetition process to capture points to score. 
@@ -35,13 +41,13 @@ game_over = False
 while game_over == False:
     # Display the initial board 
     print("\nToukay Board")
-    print("---------------------------")
-    print("|Row|    |P1|    |P2|")
+    print("------------------------------")
+    print("|Row|       |P1|       |P2|")
     
     for i in range(len(board)):
-        print("----------------------")
+        print("------------------------------")
         print("|",i,"|", "    ", "|",board[i][0],"|", "    ", "|",board[i][1],"|")
-        print("----------------------")
+        print("------------------------------")
 
     print("\nScores")
     print("Player 1:", player1_score)
@@ -73,7 +79,7 @@ while game_over == False:
         print("Please select another row between (0-2)")
     
     elif board[row_selection][col_selection] == 0:
-        print(" That cell is empty.")
+        print("That cell is empty.")
 
     else: 
         turn_over = False 
@@ -139,8 +145,7 @@ while game_over == False:
                         player1_score += 4
                     else:
                         player2_score += 4
-
-            print("Capture!!!")
+                    print("Capture!!!")
 
             #continue collecting stones or stop 
 
@@ -188,17 +193,16 @@ print("Player 1:", player1_score)
 print("Player 2:", player2_score)
 
 if player1_score >player2_score:
+    print("CONGRATULATIONS!!!")
     print("Player 1 wins!")
 
 elif player2_score > player1_score:
+    print("CONGRATULATIONS!!!")
     print("Player 2 wins!")
 
 else:
     print("Draw!")
-
-
-
-    
+  
 
 
 
