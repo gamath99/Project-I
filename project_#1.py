@@ -186,7 +186,7 @@ while game_over == False:
     if repetitions >= 3:
 
         print("\nSame position occured 3 times.")
-        print("DRAW!")                     
+        print("End of the Game")                     
 
         game_over =True
         break            
