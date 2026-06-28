@@ -140,11 +140,22 @@ while game_over == False:
                     else:
                         player2_score += 4
 
-            #print("Capture!!!")
+            print("Capture!!!")
+
+            #continue collecting stones or stop 
+
+            if was_empty:
+
+                turn_over = True
+            else:
+                    
+                row_selection = r
+                col_selection = c
+
+                print("Continue picking stones from cell:", row_selection, col_selection)
+
 
     #eliminate repetition in case of infinite loop 
-
-    
 
     board_state = str(board)
 
@@ -154,7 +165,7 @@ while game_over == False:
 
     for state in board_history:
     
-        if state == board_history:
+        if state == board_state:
             repetitions += 1 
 
     if repetitions >= 3:
@@ -164,18 +175,7 @@ while game_over == False:
 
         game_over =True
         break            
-            # continue collecting stones or stop 
-
-            #if was_empty:
-
-                #turn_over = True
-            #else:
-                    
-                #row_selection = r
-                #col_selection = c
-
-                #print("Continue picking stones from cell:", row_selection, col_selection)
-
+        
     #Change player
     if turn_player == 1:
         turn_player = 2
