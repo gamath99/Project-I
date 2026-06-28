@@ -79,17 +79,19 @@ while game_over == False:
             stones = board[row_selection][col_selection]
             board[row_selection][col_selection] = 0 
 
-            index = path.index((row_selection, col_selection))
+            start_index = path.index((row_selection, col_selection))
+
+            last_index = start_index
 
             was_empty = False
 
             #designated player distribute the stones in the board. 
             while stones > 0:
 
-                index = (index + 1) % len(path)
+                last_index = (last_index + 1) % len(path)
 
-                r = path[index][0]
-                c = path[index][1]
+                r = path[last_index][0]
+                c = path[last_index][1]
 
                 if stones == 1 and board[r][c] == 0:
                     was_empty = True
@@ -118,9 +120,9 @@ while game_over == False:
                     player2_score += 4
 
                 #checking previous cell
-                previous_index = (index - 1) % len(path)
-                r_prev = path[previous_index]
-                c_prev = path[previous_index]
+                previous_index = (last_index - 1) % len(path)
+                r_prev = path[previous_index][0]
+                c_prev = path[previous_index][1]
 
 
                 #r2 = path[index][0]
@@ -138,13 +140,35 @@ while game_over == False:
 
             #print("Capture!!!")
 
+#eliminate repetition in case of infinite loop 
+
+    board_history = []
+
+    board_state = str(board)
+
+    board_history.append(board_state)
+
+    repetitions = 0 
+
+    for state in board_history:
+    
+        if state == board_history:
+            repetitions += 1 
+
+    if repetitions >= 3:
+
+        print("\nSame position occured 3 times.")
+        print("DRAW!")                     
+
+    game_over =True
+    break            
             # continue collecting stones or stop 
 
-            if was_empty:
+            #if was_empty:
 
-                turn_over = True
-            else:
-                pass    
+                #turn_over = True
+            #else:
+                    
                 #row_selection = r
                 #col_selection = c
 
