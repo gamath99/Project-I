@@ -25,6 +25,8 @@ path = [(0,0),
         (1,0)
 ]
 
+board_history = []
+
 game_over = False
 
 #The game is a counting and repetition process to capture points to score. 
@@ -62,7 +64,7 @@ while game_over == False:
 
     #Identify the column of each player 
     if turn_player == 1: 
-        Col_selection = 0
+        col_selection = 0
     else:
         col_selection = 1
     
@@ -140,9 +142,9 @@ while game_over == False:
 
             #print("Capture!!!")
 
-#eliminate repetition in case of infinite loop 
+    #eliminate repetition in case of infinite loop 
 
-    board_history = []
+    
 
     board_state = str(board)
 
@@ -160,8 +162,8 @@ while game_over == False:
         print("\nSame position occured 3 times.")
         print("DRAW!")                     
 
-    game_over =True
-    break            
+        game_over =True
+        break            
             # continue collecting stones or stop 
 
             #if was_empty:
